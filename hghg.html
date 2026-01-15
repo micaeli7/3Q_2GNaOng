@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <style>
+            * {
+                font-family: Varela round, Helvetica, sans-serif;
+                font-weight:500;
+            }
+            body{
+                background-image: linear-gradient(45deg, #ffe5ec, #ffc2d1, #ffb3c6, #ff8fab, #fb6f92)
+            }
+            div {
+                margin: 0 auto;
+                padding: 24px;
+                background-color: #fff;
+                border-radius: 25px;
+                height: 90vh;
+                width: 85vh;
+                align-items: center;
+                border-style:dashed;
+                border-color:#ffb3c6;
+                font-style: oblique;
+            }
+            button {
+                background-color:#ffc2d1;
+                border-radius: 5px;
+            }
+            label {
+            color: #fb6f92;
+            font-weight: 525;
+            }
+            input {
+                border-radius: 5px;
+                background-color:#ffe5ec;
+                border-color: #ff8fab;
+            }
+            textarea {
+                background-color:#ffe5ec;
+                border-radius: 10px;
+                border-color:#ff8fab;
+            }
+            h1 {
+                text-align: center;
+                font-weight: bold;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CS3 Q3 Second Graded Exercise ୭ ˚. ᵎᵎ</h1>
+        <div>
+        <form action="/submit-form" method="post">
+            <label>Student ID: <input type="number" required></label>
+            <br><hr>
+            <label>Full name: <input type="text" required></label>
+            <br><hr>
+            <label>Birthday: <input type="date" required></label>
+            <br><hr>
+            <label>Email address: <input type="email" required></label>
+            <br><hr>
+            <label>Mobile phone: <input type="text" required></label>
+            <br><hr>
+            <label for="gradelevel">Grade level: </label>
+            <select id="gradelevel" name="gradelevel" required>
+                <option value="7">Grade 7</option>
+                <option value="8">Grade 8</option>
+                <option value="9">Grade 9</option>
+                <option value="10">Grade 10</option>
+                <option value="11">Grade 11</option>
+                <option value="12">Grade 12</option>
+            </select>
+            <br><hr>
+            <label for="intern">Intern</label>
+            <input type="radio" id="intern" name="InternOrExtern" required>
+            <label for="extern">Extern</label>
+            <input type="radio" id="extern" name="InternOrExtern" required>
+            <br><hr>
+            <label for="clubchoice">Preferred Organization/Club: </label>
+            <select id="clubchoice" name="clubchoice" required>
+                <option value="Literature">Literature club</option>
+                <option value="Science">Science club</option>
+                <option value="Music">Music club</option>
+                <option value="Art">Arts club</option>
+                <option value="Math">Math club</option>
+            </select>
+            <br><hr>
+            <label for="why">Why do you want to join?</label>
+            <textarea id="why" name="why" rows="4" cols="40" required></textarea>
+            <br><hr>
+            <button type="submit">Submit</button> 
+            <button type="reset">Reset</button>
+        </div>
+        </form>
+    </body>
+</html>
