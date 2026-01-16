@@ -48,16 +48,23 @@
     <body>
         <h1>CS3 Q3 Second Graded Exercise ୭ ˚. ᵎᵎ</h1>
         <div>
-        <form action="/submit-form" method="post">
-            <label>Student ID: <input type="number" required></label>
+        <form action="/submit-form" method="post"
+        onsubmit="return confirm('Are you sure you want to submit the form?')"
+        onreset="return confirm('Are you sure you want to reset the form?')">
+            <label>Student ID: <input type="number" required onblur="if(this.value===''){this.style.border='2px solid red'; this.nextElementSibling.style.display='inline';} else {this.style.border=''; this.nextElementSibling.style.display='none';}"><span style="color:red; display:none;"> Required Field</span>
+></label>
             <br><hr>
-            <label>Full name: <input type="text" required></label>
+            <label>Full name: <input type="text" required onblur="if(this.value===''){this.style.border='2px solid red'; this.nextElementSibling.style.display='inline';} else {this.style.border=''; this.nextElementSibling.style.display='none';}"><span style="color:red; display:none;"> Required Field</span>
+></label>
             <br><hr>
-            <label>Birthday: <input type="date" required></label>
+            <label>Birthday: <input type="date" required onblur="if(this.value===''){this.style.border='2px solid red'; this.nextElementSibling.style.display='inline';} else {this.style.border=''; this.nextElementSibling.style.display='none';}"><span style="color:red; display:none;"> Required Field</span>
+></label>
             <br><hr>
-            <label>Email address: <input type="email" required></label>
+            <label>Email address: <input type="email" required onblur="if(this.value===''){this.style.border='2px solid red'; this.nextElementSibling.style.display='inline';} else {this.style.border=''; this.nextElementSibling.style.display='none';}"><span style="color:red; display:none;"> Required Field</span>
+</label>
             <br><hr>
-            <label>Mobile phone: <input type="text" required></label>
+            <label>Mobile phone: <input type="text" required onblur="if(this.value===''){this.style.border='2px solid red'; this.nextElementSibling.style.display='inline';} else {this.style.border=''; this.nextElementSibling.style.display='none';}"><span style="color:red; display:none;"> Required Field</span>
+></label>
             <br><hr>
             <label for="gradelevel">Grade level: </label>
             <select id="gradelevel" name="gradelevel" required>
