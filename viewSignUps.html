@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Signups</title>
+    <style>
+        * {
+            font-family: Varela round, Helvetica, sans-serif;
+            font-weight:500;
+            font-style: oblique;
+        }
+        body{
+            background-image: linear-gradient(45deg, #ffe5ec, #ffc2d1, #ffb3c6, #ff8fab, #fb6f92)
+        }
+        div {
+            margin: 0 auto;
+            padding: 24px;
+            background-color: #fff;
+            border-radius: 25px;
+            height: 90vh;
+            width: fit-content;
+            max-width: 95vw;
+            border-style:dashed;
+            border-color:#ffb3c6;
+            font-style: oblique;
+        }
+        button {
+            background-color:#ffc2d1;
+            border-radius: 5px;
+        }
+        label {
+            color: #fb6f92;
+            font-weight: 525;
+        }
+        input, textarea, select {
+            border-radius: 5px;
+            background-color:#ffe5ec;
+            border-color: #ff8fab;
+        }
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
+        }
+        table {
+            margin: 0 auto;
+            border-radius: 7px;
+            border-color:#ffc2d1;
+        }
+        th {
+            font-weight: bold;
+            color:#ff8fab;
+            background-color:#ffe5ec;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Student Club Sign-Ups</h1>
+<div>
+<label>Filter by Club:</label>
+<select id="clubFilter">
+    <option value="All">All</option>
+</select>
+<p>Total Sign-ups: <span id="total">0</span></p>
+<p id="nosignups" style="color:#fb6f92; font-weight:bold; display:none; text-align:center;">
+    No Sign Ups for the club
+</p>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Club</th>
+            <th>ID</th>
+            <th>Fullname</th>
+            <th>Grade</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Intern|Extern</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+<br>
+<button onclick="back()">Back to SignUp</button>
+</div>
+
+<script>
+const signups = JSON.parse(localStorage.getItem("signups")) || [];
+const tableBody = document.getElementById("tableBody");
+const clubFilter = document.getElementById("clubFilter");
+const total = document.getElementById("total");
+const clubs = [...new Set(signups.map(s => s.club))];
+clubs.forEach(club => {
+    const option = document.createElement("option");
+    option.value = club;
+    option.textContent = club;
+    clubFilter.appendChild(option);
+});
+function displaySignups(selectedClub) {
+    tableBody.innerHTML = "";
+    let filteredSignups;
+    if (selectedClub === "All") {
+        filteredSignups = signups;
+    } else {
+        filteredSignups = signups.filter(s => s.club === selectedClub);
+    }
+    const noDataMsg = document.getElementById("nosignups");
+    if (filteredSignups.length === 0) {
+        nosignups.style.display = "block";
+    } else {
+        nosignups.style.display = "none";
+    }
+    filteredSignups.forEach(s => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${s.club}</td>
+            <td>${s.studentId}</td>
+            <td>${s.fullname}</td>
+            <td>${s.grade}</td>
+            <td>${s.email}</td>
+            <td>${s.mobile}</td>
+            <td>${s.status}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+    total.textContent = filteredSignups.length;
+}
+
+displaySignups("All");
+clubFilter.addEventListener("change", function () {
+    displaySignups(this.value);
+});
+function back() {
+    window.location.href = "3Q_3GNaOng.html";
+}
+</script>
+
+</body>
+</html>

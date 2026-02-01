@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            font-family: Varela round, Helvetica, sans-serif;
+            font-weight:500;
+        }
+        body{
+            background-image: linear-gradient(45deg, #ffe5ec, #ffc2d1, #ffb3c6, #ff8fab, #fb6f92)
+        }
+        div {
+            margin: 0 auto;
+            padding: 24px;
+            background-color: #fff;
+            border-radius: 25px;
+            height: 90vh;
+            width: 85vh;
+            border-style:dashed;
+            border-color:#ffb3c6;
+            font-style: oblique;
+        }
+        button {
+            background-color:#ffc2d1;
+            border-radius: 5px;
+        }
+        label {
+            color: #fb6f92;
+            font-weight: 525;
+        }
+        input, textarea, select {
+            border-radius: 5px;
+            background-color:#ffe5ec;
+            border-color: #ff8fab;
+        }
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<h1>CS3 Q3 Second Graded Exercise ୭ ˚. ᵎᵎ</h1>
+
+<div>
+<form id="signupForm">
+
+    <label>Student ID:
+        <input type="number" id="studentId" required>
+    </label><hr>
+
+    <label>Full Name:
+        <input type="text" id="fullname" required>
+    </label><hr>
+
+    <label>Birthday:
+        <input type="date" id="birthday" required>
+    </label><hr>
+
+    <label>Email Address:
+        <input type="email" id="email" required>
+    </label><hr>
+
+    <label>Mobile Phone:
+        <input type="text" id="mobile" required>
+    </label><hr>
+
+    <label>Grade Level:</label>
+    <select id="gradelevel" required>
+        <option value="7">Grade 7</option>
+        <option value="8">Grade 8</option>
+        <option value="9">Grade 9</option>
+        <option value="10">Grade 10</option>
+        <option value="11">Grade 11</option>
+        <option value="12">Grade 12</option>
+    </select><hr>
+
+    <label>
+        <input type="radio" name="status" value="Intern" required> Intern
+    </label>
+    <label>
+        <input type="radio" name="status" value="Extern"> Extern
+    </label><hr>
+
+    <label>Preferred Organization/Club:</label>
+    <select id="clubchoice" required>
+        <option value="Literature">Literature Club</option>
+        <option value="Science">Science Club</option>
+        <option value="Music">Music Club</option>
+        <option value="Art">Arts Club</option>
+        <option value="Math">Math Club</option>
+    </select><hr>
+
+    <label>Why do you want to join?</label><br>
+    <textarea id="why" rows="4" cols="40" required></textarea><hr>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <button type="button" onclick="viewSignups()">View Signups</button>
+
+</form>
+</div>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    if (!confirm("Are you sure you want to submit the form?")) return;
+
+    const signupData = {
+        studentId: document.getElementById("studentId").value,
+        fullname: document.getElementById("fullname").value,
+        birthday: document.getElementById("birthday").value,
+        email: document.getElementById("email").value,
+        mobile: document.getElementById("mobile").value,
+        grade: document.getElementById("gradelevel").value,
+        status: document.querySelector('input[name="status"]:checked').value,
+        club: document.getElementById("clubchoice").value,
+        reason: document.getElementById("why").value
+    };
+
+    let signups = JSON.parse(localStorage.getItem("signups")) || [];
+    signups.push(signupData);
+    localStorage.setItem("signups", JSON.stringify(signups));
+
+    alert("Signup saved! Thank you.");
+    this.reset();
+});
+
+function viewSignups() {
+    window.location.href = "viewSignUps.html";
+}
+</script>
+
+</body>
+</html>
